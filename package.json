@@ -1,0 +1,25 @@
+{
+  "name": "doodle-jump-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "dependencies": {
+    "p5": "^1.4.1",
+    "p5js": "^1.2.17",
+    "parcel-bundler": "^1.3.1"
+  },
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html --public-url=./"
+  },
+  "keywords": [],
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "src/assets",
+        "staticOutDir": "assets"
+      }
+    ],
+    "watcherGlob": "**"
+  }
+}

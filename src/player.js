@@ -1,4 +1,11 @@
-class Player {
+import {myp5} from './main'
+import {WIDTH, HEIGHT} from "./constants"
+import {Platform} from "./platform"
+
+export class Player {
+
+  player = null
+
   #PLAYER_WIDTH = 30    //Ширина игрока
   #PLAYER_HEIGHT = 90   //Длина игрока
   #DELTATIME = 500      //Надо подбирать это число
@@ -24,8 +31,8 @@ class Player {
 
   //двинуть игрока
   movePlayer() {
-    this.dx += this.ax * (deltaTime / this.#DELTATIME)
-    this.dy += this.ay * (deltaTime / this.#DELTATIME)
+    this.dx += this.ax * (myp5.deltaTime / this.#DELTATIME)
+    this.dy += this.ay * (myp5.deltaTime / this.#DELTATIME)
 
     if ((this.shifting) && (this.dx > this.#MAX_X_SPEED)) {
       this.dx = this.#MAX_X_SPEED
@@ -62,9 +69,9 @@ class Player {
     if (this.dy >= 0) {
       //коллизии на платформы
       //работают только когда игрок падает
-      platforms.forEach(item => {
+      Platform.platforms.forEach(item => {
         if (this.collisionRect(item)) {
-          this.dy = (this.#g * (deltaTime / this.#DELTATIME) + this.dy) * -1
+          this.dy = (this.#g * (myp5.deltaTime / this.#DELTATIME) + this.dy) * -1
         }
       })
 
@@ -91,11 +98,11 @@ class Player {
   shiftPlayer(way) {
     this.shifting = true
     switch (way) {
-      case LEFT_ARROW:
+      case myp5.LEFT_ARROW:
         this.ax = -this.#g
         this.#pov = -1
         break
-      case RIGHT_ARROW:
+      case myp5.RIGHT_ARROW:
         this.ax = this.#g
         this.#pov = 1
         break
@@ -105,10 +112,10 @@ class Player {
   unshiftPlayer(way) {
     this.shifting = false
     switch (way) {
-      case LEFT_ARROW:
+      case myp5.LEFT_ARROW:
         this.ax = this.#g
         break
-      case RIGHT_ARROW:
+      case myp5.RIGHT_ARROW:
         this.ax = -this.#g
         break
     }
@@ -116,9 +123,9 @@ class Player {
 
   //Нарисовать игрока
   drawPlayer() {
-    fill('green')
-    rect(this.x, this.y, this.#PLAYER_WIDTH, this.#PLAYER_HEIGHT)
-    fill('red')
-    rect(this.x + (this.#pov * (this.#PLAYER_WIDTH / 2)), this.y + 15, this.#PLAYER_WIDTH, 5)
+    myp5.fill('green')
+    myp5.rect(this.x, this.y, this.#PLAYER_WIDTH, this.#PLAYER_HEIGHT)
+    myp5.fill('red')
+    myp5.rect(this.x + (this.#pov * (this.#PLAYER_WIDTH / 2)), this.y + 15, this.#PLAYER_WIDTH, 5)
   }
 }
