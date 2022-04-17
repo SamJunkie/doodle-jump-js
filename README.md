@@ -1,9 +1,5 @@
 Another Doodle jump for web
 
-Поднятие проекта:
+Поднятие проекта: npm install
 
-npm install
-
-Запуск проекта:
-
-npm run start
+Запуск проекта: npm run start
