@@ -1,9 +1,9 @@
 Another Doodle jump for web
 
-###Поднятие проекта:
+Поднятие проекта:
 
-#### npm install
+npm install
 
-###Запуск проекта:
+Запуск проекта:
 
-####npm run start
+npm run start
